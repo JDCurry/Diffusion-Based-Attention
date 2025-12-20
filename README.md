@@ -1,5 +1,8 @@
 # Diffusion-Based Attention
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18004600.svg)](https://doi.org/10.5281/zenodo.18004600)
+
+
 This repository contains the implementation and experimental results for the paper:
 
 **"Diffusion Attention: Replacing Softmax with Heat Kernel Dynamics"**
