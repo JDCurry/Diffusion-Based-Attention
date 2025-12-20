@@ -51,56 +51,29 @@ https://pytorch.org/get-started/locally/
 Basic training with diffusion attention (4 layers, t=0.28):
 
 ```bash
-python train_diffusion_attention.py \
-    --model diffusion_fixed \
-    --fixed_t 0.28 \
-    --n_layers 4 \
-    --epochs 1 \
-    --max_tokens 500000 \
-    --exp_name 4layer_t028
+python train_diffusion_attention.py --model diffusion_fixed --fixed_t 0.28 --n_layers 4 --epochs 1 --max_tokens 500000 --exp_name 4layer_t028
 ```
 
 Training with depth-scaled diffusion time (follows t proportional to 1/sqrt(L)):
 
 ```bash
 # 8 layers: t = 0.28 * sqrt(4/8) = 0.20
-python train_diffusion_attention.py \
-    --model diffusion_fixed \
-    --fixed_t 0.20 \
-    --n_layers 8 \
-    --epochs 1 \
-    --max_tokens 500000 \
-    --exp_name 8layer_t020
+python train_diffusion_attention.py --model diffusion_fixed --fixed_t 0.20 --n_layers 8 --epochs 1 --max_tokens 500000 --exp_name 8layer_t020
 
 # 12 layers: t = 0.28 * sqrt(4/12) = 0.16
-python train_diffusion_attention.py \
-    --model diffusion_fixed \
-    --fixed_t 0.16 \
-    --n_layers 12 \
-    --epochs 1 \
-    --max_tokens 500000 \
-    --exp_name 12layer_t016
+python train_diffusion_attention.py --model diffusion_fixed --fixed_t 0.16 --n_layers 12 --epochs 1 --max_tokens 500000 --exp_name 12layer_t016
 ```
 
 Standard softmax baseline:
 
 ```bash
-python train_diffusion_attention.py \
-    --model standard \
-    --n_layers 4 \
-    --epochs 1 \
-    --max_tokens 500000 \
-    --exp_name 4layer_standard
+python train_diffusion_attention.py --model standard --n_layers 4 --epochs 1 --max_tokens 500000 --exp_name 4layer_standard
 ```
 
 Adaptive diffusion time (learns t during training):
 
 ```bash
-python train_diffusion_attention.py \
-    --model diffusion_adaptive \
-    --epochs 1 \
-    --max_tokens 500000 \
-    --exp_name adaptive_500k
+python train_diffusion_attention.py --model diffusion_adaptive --epochs 1 --max_tokens 500000 --exp_name adaptive_500k
 ```
 
 ### Command Line Arguments
@@ -127,10 +100,7 @@ python train_diffusion_attention.py \
 ### Text Generation (Sanity Check)
 
 ```bash
-python scripts/generate_text.py logs/12layer_t016/best_model.pt \
-    --prompt "The meaning of life is" \
-    --max_tokens 100 \
-    --num_samples 3
+python scripts/generate_text.py logs/12layer_t016/best_model.pt --prompt "The meaning of life is" --max_tokens 100 --num_samples 3
 ```
 
 ### Generating Figures
@@ -196,23 +166,3 @@ Typical training times (500k tokens, 1 epoch):
 - 8 layers: ~4 hours
 - 12 layers: ~6 hours
 
-## Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@article{bratcher2025diffusion,
-  title={Diffusion Attention: Replacing Softmax with Heat Kernel Dynamics},
-  author={Bratcher, Joshua D.},
-  journal={arXiv preprint},
-  year={2025}
-}
-```
-
-## License
-
-MIT License
-
-## Acknowledgments
-
-This work was developed with assistance from Anthropic's Claude (Opus 4.5) for code implementation and manuscript preparation.
